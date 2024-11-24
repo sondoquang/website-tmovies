@@ -1,4 +1,3 @@
-
 package controllers;
 
 import java.io.IOException;
@@ -21,6 +20,7 @@ import jakarta.servlet.http.HttpSession;
  */
 @WebServlet({"/login"})
 public class LoginController extends HttpServlet {
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -32,7 +32,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/layout/Login.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/assets/views/Login.jsp").forward(request, response);
     }
 
     /**
@@ -52,18 +52,21 @@ public class LoginController extends HttpServlet {
         UserDAO dao = new UserDAOImple();
         User user = dao.findByIdOrEmail(username.trim());
         HttpSession session = request.getSession();
-        String sercureUri = (String)session.getAttribute("sercureUri");
-        if(user != null) {
-            if(password.equals(user.getPassword())) {
-                if(remember != null) {
-                    byte[] bytes = (username+","+password).getBytes();
-                    String userInfo =Base64.getEncoder().encodeToString(bytes);
+        String sercureUri = (String) session.getAttribute("sercureUri");
+        if (sercureUri == null) {
+            sercureUri = "/WebsiteTMovies/homepage/index";
+        }
+        if (user != null) {
+            if (password.equals(user.getPassword())) {
+                if (remember != null) {
+                    byte[] bytes = (username + "," + password).getBytes();
+                    String userInfo = Base64.getEncoder().encodeToString(bytes);
                     Cookie cookie = new Cookie("user", userInfo);
-                    cookie.setMaxAge(30*24*60*60); // hiệu lực 30 ngày
+                    cookie.setMaxAge(30 * 24 * 60 * 60); // hiệu lực 30 ngày
                     cookie.setPath("/"); // hiệu lực toàn ứng dụng
                     // Gửi v�? trình duyệt
                     response.addCookie(cookie); // cookie
-                }else {
+                } else {
                     Cookie[] cookies = request.getCookies();
                     if (cookies != null) {
                         for (Cookie cookie : cookies) {
@@ -77,16 +80,17 @@ public class LoginController extends HttpServlet {
                         }
                     }
                 }
-                request.getSession().setAttribute("user",user);
-                request.getSession().setAttribute("error",null);
-                if(user.getAdmin()){
+                request.getSession().setAttribute("user", user);
+                request.getSession().setAttribute("error", null);
+                if (user.getAdmin()) {
                     response.sendRedirect("/WebsiteTMovies/admin/home");
-                }else
+                } else {
                     response.sendRedirect(sercureUri);
+                }
             } else {
                 response.sendRedirect(sercureUri);
             }
-        }else {
+        } else {
             response.sendRedirect(sercureUri);
         }
     }

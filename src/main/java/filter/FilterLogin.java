@@ -15,11 +15,14 @@ import java.io.IOException;
 @WebFilter({"/login"})
 public class FilterLogin extends HttpFilter implements Filter {
        
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		HttpSession session = request.getSession();
-		session.setAttribute("isLogin", true);
 		chain.doFilter(request, response);
 	}
 }
