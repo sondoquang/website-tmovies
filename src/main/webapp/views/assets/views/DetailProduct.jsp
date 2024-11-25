@@ -48,7 +48,7 @@
                             </h2>
                         </button>
                         <div class="row list_items">
-                            <c:forEach var="item" items="${listTop10Videos}">
+                            <c:forEach var="item" items="${videofavourite}">
                                 <div class="col-sm-12 mt-3 suggested__item">
                                     <div class="wrap__item" style="overflow: hidden;">
                                         <div class="item__image">
@@ -60,7 +60,7 @@
                                             <div class="ct">
                                                 <span>English</span>
                                             </div>
-                                            <a href="${url}/detail/${item.id}">${item.title}</a>
+                                            <a href="${pageContext.request.contextPath}/videos/detail/${item.id}">${item.title}</a>
                                             <div class="duration__time">
                                                 <i class="ri-time-line"></i><span>2 Hr 32 Mn</span>
                                             </div>
@@ -79,7 +79,7 @@
                             <div class="img">
                                 <img
                                     src="${pageContext.request.contextPath}/views/assets/images/banners/${video.poster}"
-                                    alt="banner_first" class="poster__film">
+                                    alt="banner_first" class="poster__film w-100" style="height: 550px; object-fit: cover;">
                             </div>
                             <div class="play__btn__video" id="btnPlayVideo"
                                  style="z-index: 10;">

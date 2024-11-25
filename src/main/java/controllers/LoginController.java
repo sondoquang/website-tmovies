@@ -32,6 +32,13 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        String sercureUri = (String)session.getAttribute("sercureUri");
+        if(user !=null){
+            if((!user.getAdmin() && (sercureUri.contains("admin"))))
+                request.setAttribute("message", "Vui lòng đăng nhập với quyền admin !");
+        }
         request.getRequestDispatcher("/views/assets/views/Login.jsp").forward(request, response);
     }
 
@@ -54,7 +61,7 @@ public class LoginController extends HttpServlet {
         HttpSession session = request.getSession();
         String sercureUri = (String) session.getAttribute("sercureUri");
         if (sercureUri == null) {
-            sercureUri = "/WebsiteTMovies/homepage/index";
+            sercureUri = "/WebsiteTMovies/home/index";
         }
         if (user != null) {
             if (password.equals(user.getPassword())) {
@@ -81,17 +88,16 @@ public class LoginController extends HttpServlet {
                     }
                 }
                 request.getSession().setAttribute("user", user);
-                request.getSession().setAttribute("error", null);
                 if (user.getAdmin()) {
                     response.sendRedirect("/WebsiteTMovies/admin/home");
+                    return;
                 } else {
                     response.sendRedirect(sercureUri);
+                    return;
                 }
-            } else {
-                response.sendRedirect(sercureUri);
             }
-        } else {
-            response.sendRedirect(sercureUri);
         }
+        request.setAttribute("message","Username or password incorrect");
+        request.getRequestDispatcher("/views/assets/views/Login.jsp").forward(request, response);
     }
 }

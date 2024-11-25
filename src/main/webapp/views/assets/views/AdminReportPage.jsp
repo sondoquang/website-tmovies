@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<c:url value="/mngmt/reports" var="url"/>
+<c:url value="/admin/mngmt/reports" var="url"/>
 <div class="wrapper">
     <%--Include side bar--%>
     <jsp:include page="NavbarAdmin.jsp"/>

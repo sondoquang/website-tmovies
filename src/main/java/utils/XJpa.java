@@ -13,7 +13,7 @@ public class XJpa {
     private static EntityManagerFactory factory;
 
     static {
-        factory = Persistence.createEntityManagerFactory("DataTMovies");
+        factory = Persistence.createEntityManagerFactory("DataTMovies1");
     }
 
     public static EntityManager getEntityManager() {
@@ -62,7 +62,7 @@ public class XJpa {
             }
             em.getTransaction().commit();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             em.getTransaction().rollback();
             return null;
         }

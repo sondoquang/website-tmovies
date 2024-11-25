@@ -35,31 +35,33 @@
         </section>
 
         <section class="container pt-5" style="justify-items: center;">
-            <form action="/action_page.php" class="login-form">
+            <form action="${pageContext.request.contextPath}/login" class="login-form" method="post">
                 <div class="mb-3 mt-3">
                     <label for="usr" class="form-label">Username:</label>
-                    <input type="text" class="form-control" id="usr" placeholder="Enter username" name="username">
+                    <input type="text" class="form-control" id="usr" placeholder="Enter username" name="username" value="${param.username}">
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" value="${param.password}">
                 </div>
                 <div class="form-check mb-3 text-center">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                        <input class="form-check-input" type="checkbox" name="rememberMe"> Remember me
                     </label>
+                    <p class="text-center text-danger">${message}</p>
                     <p class="mt-2"><a href="#" style="color: #828fcc;">Forget password ?</a></p>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-info text-white ps-5 pe-5 btnLogin">LOGIN</button>
                 </div>
+                <div class="text-center"><p class="mt-2"><a href="${pageContext.request.contextPath}/sign-in" style="color: #828fcc;">I do not have an account yet ?</a></p></div>
             </form>
         </section>
 
         <jsp:include page="Footer.jsp"/>
         <!--=============== MAIN JS ===============-->
-        <script src="../js/Detail.js"></script>
-        <script src="../js/main.js"></script>
+        <script src="${pageContext.request.contextPath}/views/assets/js/Detail.js"></script>
+        <script src="${pageContext.request.contextPath}/views/assets/js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 

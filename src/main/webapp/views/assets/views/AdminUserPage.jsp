@@ -18,7 +18,7 @@
         <title>Admin</title>
     </head>
     <body>
-    <c:url value="/user" var="url"/>
+    <c:url value="/admin/user" var="url"/>
     <div class="wrapper">
         <jsp:include page="NavbarAdmin.jsp"/>
         <div class="main p-2">

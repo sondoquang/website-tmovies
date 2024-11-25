@@ -11,13 +11,13 @@
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="${url}/index" class="nav__logo"><img
+            <a href="${pageContext.request.contextPath}/home/index" class="nav__logo"><img
                     src="${pageContext.request.contextPath}/views/assets/images/logos/logo.png"
                     alt=""></a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#" class="nav__link">Home</a>
+                    <li class="nav__item"><a href="${pageContext.request.contextPath}/home/index" class="nav__link">Home</a>
                     </li>
 
                     <li class="nav__item"><a href="#" class="nav__link">About
@@ -55,11 +55,11 @@
                 <i class="ri-search-line nav__search" id="search-btn"></i>
                 <c:url value="/logout" var="urlLogout" />
                 <a href="${urlLogout}" class="btn btn-info"
-                   ${sessionScope.user != null?'':'hidden'}>Đăng xuất</a>
+                   ${sessionScope.user != null?'':'hidden'}>Logout</a>
                 <!-- Login button -->
                 <a href="${pageContext.request.contextPath}/login" class="btn btn-info text-white" ${sessionScope.user != null?'hidden':''}><i class="ri-user-line"> Login</i></a> 
                 <a href="${pageContext.request.contextPath}/account" class="btn btn-warning text-dark"
-                   ${sessionScope.user != null?'':'hidden'}>Tài khoản</a>
+                   ${sessionScope.user != null?'':'hidden'}>Account</a>
 
                 <!-- Toggle button -->
                 <div class="nav__toggle" id="nav-toggle">

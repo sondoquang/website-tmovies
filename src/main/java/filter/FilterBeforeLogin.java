@@ -9,22 +9,21 @@ import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
-@WebFilter({"/homepage/detail/*"})
+@WebFilter({"/videos/detail/*",
+        "/home/*"})
 public class FilterBeforeLogin extends HttpFilter implements Filter {
-       
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		HttpSession session = request.getSession();
-		String uri = request.getRequestURI();
-		session.setAttribute("sercureUri", uri);
-		chain.doFilter(request, response);
-	}
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        HttpSession session = request.getSession();
+        String uri = request.getRequestURI();
+        session.setAttribute("sercureUri", uri);
+        chain.doFilter(request, response);
+    }
 }

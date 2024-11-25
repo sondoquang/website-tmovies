@@ -14,13 +14,13 @@ import daos.UserDAO;
 import daoimples.UserDAOImple;
 import entities.User;
 
-@WebServlet({"/user/index",
-    "/user/edit/*",
-    "/user/create",
-    "/user/update/*",
-    "/user/delete",
-    "/user/reset",
-    "/user/search/*",
+@WebServlet({"/admin/user/index",
+    "/admin/user/edit/*",
+    "/admin/user/create",
+    "/admin/user/update/*",
+    "/admin/user/delete",
+    "/admin/user/reset",
+    "/admin/user/search/*",
 })
 public class MngmntUserController extends HttpServlet {
 

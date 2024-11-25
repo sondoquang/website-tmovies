@@ -23,20 +23,17 @@ public class FavouriteDAOImple implements FavouriteDAO {
 
     @Override
     public Favourite create(Favourite item) {
-        Favourite favourite = XJpa.excuteUpdate(item, 1);
-        return favourite;
+        return XJpa.excuteUpdate(item, 1);
     }
 
     @Override
     public Favourite update(Favourite item) {
-        Favourite favourite = XJpa.excuteUpdate(item, 0);
-        return favourite;
+        return XJpa.excuteUpdate(item, 0);
     }
 
     @Override
     public Favourite deleteById(Integer id) {
-        Favourite favourite = XJpa.excuteDUpdate(id,Favourite.class);
-        return favourite;
+        return XJpa.excuteDUpdate(id,Favourite.class);
     }
 
     @Override
@@ -67,8 +64,5 @@ public class FavouriteDAOImple implements FavouriteDAO {
         return XJpa.getResultList(Video.class, jpql, new HashMap<>(),value);
     }
 
-    public static void main(String[] args) {
-        FavouriteDAO dao = new FavouriteDAOImple();
-        List<Favourite> list = dao.findAll();
-    }
+
 }

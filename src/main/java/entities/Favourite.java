@@ -7,7 +7,7 @@ import java.util.Date;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="Favourites"/*,uniqueConstraints =  {@UniqueConstraint(columnNames = {"userId","videoId"})}*/)
+@Table(name="Favourites",uniqueConstraints =  {@UniqueConstraint(columnNames = {"userId","videoId"})})
 
 public class Favourite {
 	@Id
@@ -59,7 +59,6 @@ public class Favourite {
 	}
 
 	public Favourite(Integer id, User user, Video video, Date likeDate) {
-		this.id = id;
 		this.user = user;
 		this.video = video;
 		this.likeDate = likeDate;

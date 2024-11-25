@@ -14,10 +14,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet({"/mngmt/reports/index",
-            "/mngmt/reports/favouritesSingle",
-            "/mngmt/reports/favouritesUser",
-            "/mngmt/reports/favouritesShare",
+@WebServlet({"/admin/mngmt/reports/index",
+            "/admin/mngmt/reports/favouritesSingle",
+            "/admin/mngmt/reports/favouritesUser",
+            "/admin/mngmt/reports/favouritesShare",
             })
 public class MngmntReportController extends HttpServlet {
     @Override

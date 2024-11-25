@@ -15,21 +15,17 @@ import jakarta.servlet.http.HttpSession;
  */
 @WebServlet({"/logout"})
 public class LogoutController extends HttpServlet {
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
     	session.setAttribute("user",null);
-        session.setAttribute("isLogin",false);
-        response.sendRedirect("/WebsiteTMovies/homepage/index");
+        String sercureUri = (String)session.getAttribute("sercureUri");
+        if (sercureUri != null) {
+            response.sendRedirect(sercureUri);
+            return;
+        }
+        response.sendRedirect("/WebsiteTMovies/home/index");
     }
 
     /**

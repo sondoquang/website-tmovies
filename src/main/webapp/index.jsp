@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:redirect url="/homepage/index"/>
+	<c:redirect url="/home/index"/>
 </body>
 </html>

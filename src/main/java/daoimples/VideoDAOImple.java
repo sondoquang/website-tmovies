@@ -53,14 +53,16 @@ public class VideoDAOImple implements VideoDAO {
 	
 	public static void main(String[] args) {
         VideoDAO dao = new VideoDAOImple();
-        List<Video> videos = dao.getTopVideoActive(1);
-        videos.forEach(v ->{
-            System.out.println(v.getTitle());
-        });
+       Video video = dao.findById(3);
+//        videos.forEach(v ->{
+            System.out.println(video.getTitle());
+//        });
     }
 
     @Override
     public List<Video> getTopVideoActive(int top) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+
 }

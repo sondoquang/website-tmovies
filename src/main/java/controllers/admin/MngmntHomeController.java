@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet({"/mngmt/home/index"
+@WebServlet({"/admin/mngmt/home/index"
             })
 public class MngmntHomeController extends HttpServlet {
     @Override

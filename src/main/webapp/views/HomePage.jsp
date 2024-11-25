@@ -200,20 +200,42 @@
                                         <i class="ri-time-line"></i><span>2 Hr 3 Min</span>
                                     </div>
                                     <div class="likle_icon">
-                                        <a href=""><i class="ri-heart-line"></i></a>
+                                        <a href="${pageContext.request.contextPath}/videos/like/${item.id}"><i class="ri-heart-line"></i></a>
                                     </div>
                                     <div class="likle_icon">
-                                        <a href=""><i class="ri-share-line"></i></a>
+                                        <button type="button" class="text-white" style="background-color: transparent;"><i class="ri-share-line" data-bs-toggle="modal" data-bs-target="#share"></i></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="playbtn">
-                                <a href="${url}/detail/${item.id}"><img
+                                <a href="${pageContext.request.contextPath}/videos/detail/${item.id}"><img
                                         src="${pageContext.request.contextPath}/views/assets/images/logos/play-button.png"
                                         alt=""></a>
                             </div>
                         </div>
                     </c:forEach>
+                    <!-- Modal -->
+                    <div class="modal fade center" id="share" tabindex="-1" aria-labelledby="share"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <form action="${pageContext.request.contextPath}/videos/share/${item.id}" method="post">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="share">Share Video</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nhập vào email muốn gửi">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Share</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -271,7 +293,7 @@
                                 <div class="ct">
                                     <span>English</span>
                                 </div>
-                                <a href="${url}/detail/${item.id}">${item.title}</a>
+                                <a href="${pageContext.request.contextPath}/videos/detail/${item.id}">${item.title}</a>
                                 <div class="body d-flex">
                                     <div class="duration__time">
                                         <i class="ri-time-line"></i><span>2 Hr 32 Mn</span>

@@ -21,19 +21,19 @@ public class Admincontroller extends HttpServlet {
         String path = request.getServletPath();
         if (path.contains("home")) {
             session.setAttribute("menuActive",1);
-            response.sendRedirect("/WebsiteTMovies/mngmt/home/index");
+            response.sendRedirect("/WebsiteTMovies/admin/mngmt/home/index");
         }
         else if(path.contains("videos")) {
             session.setAttribute("menuActive", 2);
-            response.sendRedirect("/WebsiteTMovies/mngmt/videos/index");
+            response.sendRedirect("/WebsiteTMovies/admin/mngmt/videos/index");
         }
         else if(path.contains("users")){
             session.setAttribute("menuActive",3);
-            response.sendRedirect("/WebsiteTMovies/user/index");
+            response.sendRedirect("/WebsiteTMovies/admin/user/index");
         }
         else if(path.contains("reports")){
             session.setAttribute("menuActive",4);
-            response.sendRedirect("/WebsiteTMovies/mngmt/reports/index");
+            response.sendRedirect("/WebsiteTMovies/admin/mngmt/reports/index");
         }
     }
 }
