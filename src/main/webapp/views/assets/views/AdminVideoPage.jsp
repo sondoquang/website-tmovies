@@ -22,6 +22,7 @@
     </head>
 
     <body>
+    <c:url value="/admin/mngmt/videos" var="url"/>
         <div class="wrapper">
             <!--==== Include sidebar ====-->
             <jsp:include page="NavbarAdmin.jsp"/>
@@ -37,11 +38,11 @@
                 <!--Phần control tab-pane-->
                 <div class="container p-0 container-tabs">
                     <div class="tabs d-flex">
-                        <div class="tab-item active_tab p-2 ">
+                        <div class="tab-item active_tab p-2 ${isEdit==true?'active_tab':''} ">
                             <i class="ri-video-add-fill"></i>
                             Video Edition
                         </div>
-                        <div class="tab-item p-2">
+                        <div class="tab-item p-2 ${isEdit==true?'active_tab':''}">
                             <i class="ri-film-line"></i>
                             Video List
                         </div>
@@ -66,32 +67,32 @@
                                         <div class="col mb-3 input-control">
                                             <label for="id" class="form-label">VIDEO ID:</label>
                                             <input type="text" class="form-control" id="id" name="id"
-                                                   placeholder="Id automatic">
+                                                   placeholder="Id automatic" value="${video.id}">
                                             <div class="error"></div>
                                         </div>
                                         <div class="col mb-3 input-control">
                                             <label for="pwd" class="form-label">VIDEO TITLE:</label>
                                             <input type="text" class="form-control" id="pwd" name="password"
-                                                   placeholder="Enter title video">
+                                                   placeholder="Enter title video" value="${video.title}">
                                             <div class="error"></div>
                                         </div>
                                         <div class="col mb-3 input-control">
                                             <label for="fullname" class="form-label">VIEW COUNT:</label>
                                             <input type="text" class="form-control" id="fullname" name="fullname"
-                                                   placeholder="View count" readonly>
+                                                   placeholder="View count" readonly value="${video.views}">
                                             <div class="error"></div>
                                         </div>
                                         <div class="col mb -3 d-flex">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" value="true" name="admin"
-                                                       id="admin">
+                                                       id="admin" ${video.active==true?'checked':''}>
                                                 <label class="form-check-label" for="admin">
                                                     ACTIVE
                                                 </label>
                                             </div>
                                             <div class="form-check ms-3">
                                                 <input class="form-check-input" type="radio" value="false" name="admin"
-                                                       id="user">
+                                                       id="user" ${video.active==false?'checked':''}>
                                                 <label class="form-check-label" for="user">
                                                     INACTIVE
                                                 </label>
@@ -102,7 +103,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Enter description" id="floatingTextarea2" style="min-height: 100px"></textarea>
+                                            <textarea class="form-control" placeholder="Enter description" id="floatingTextarea2" style="min-height: 100px">${video.description}</textarea>
                                             <label for="floatingTextarea2">Description</label>
                                         </div>
                                     </div>
@@ -160,30 +161,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach var="item" items="${list}" varStatus="vs">
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td class="rtblemail">@mdo</td>
-                                            <td><a href=""><i class="ri-edit-2-line"></i></a></td>
+                                            <th scope="row">${vs.count}</th>
+                                            <td>${item.id}</td>
+                                            <td>${item.title}</td>
+                                            <td>${item.views}</td>
+                                            <td class="rtblemail">${item.active}</td>
+                                            <td><a href=${url}/edit/${item.id}><i class="ri-edit-2-line"></i></a></td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td class="rtblemail">@mdo</td>
-                                            <td><a href=""><i class="ri-edit-2-line"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td class="rtblemail"> @mdo</td>
-                                            <td><a href=""><i class="ri-edit-2-line"></i></a></td>
-                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

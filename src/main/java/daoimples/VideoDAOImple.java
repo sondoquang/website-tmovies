@@ -7,6 +7,7 @@ import java.util.HashMap;
 import utils.XJpa;
 
 import java.util.List;
+import java.util.Map;
 
 public class VideoDAOImple implements VideoDAO {
     EntityManager em = XJpa.getEntityManager();
@@ -39,6 +40,15 @@ public class VideoDAOImple implements VideoDAO {
         return XJpa.excuteDUpdate(id,Video.class);
     }
 
+    @Override
+    public List<Video> findAll(int firstResult, int maxResults) {
+        String jpql = "SELECT v FROM Video v";
+        Map<String, Integer> map = new HashMap<>();
+        map.put("firstResult", firstResult);
+        map.put("maxResults", maxResults);
+        return XJpa.getResultList(Video.class,jpql, map);
+    }
+
     /*=== Tìm tất cả các video có title là tham số ======*/
     @Override
     public List<Object[]> FindVideosByTitle(String title) {
@@ -49,20 +59,24 @@ public class VideoDAOImple implements VideoDAO {
     
     /*Đã test hết tất cả các dao phía trên ngày 6/11/2024 (--> Không cần test lại các hàm này nữa <--)*/
 
-	
-	
-	public static void main(String[] args) {
-        VideoDAO dao = new VideoDAOImple();
-       Video video = dao.findById(3);
-//        videos.forEach(v ->{
-            System.out.println(video.getTitle());
-//        });
-    }
 
     @Override
     public List<Video> getTopVideoActive(int top) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public Long selectSumCountVideo() {
+        String jpql = "SELECT COUNT(v.id) FROM Video v";
+        return XJpa.getSingleResult(Long.class, jpql);
+    }
 
+
+    public static void main(String[] args) {
+        VideoDAO dao = new VideoDAOImple();
+//        Video video = dao.findById(3);
+//        videos.forEach(v ->{
+        System.out.println(dao.findAll(0*12,12));
+//        });
+    }
 }

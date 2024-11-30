@@ -99,13 +99,11 @@
                                         <li><span>Genre : </span> <span>Action, Drama</span></li>
                                         <li><span>Language : </span> <span>English</span></li>
                                         <li>
-                                            <div class="newsleter">
-                                                <span class="me-2">SHARE : </span> <input type="text"
-                                                                                          name="newsleter" id="newsleter" placeholder="Enter Email">
-                                                <form method="post">
-                                                    <button type="submit" class="btn__sendMail">
-                                                        <i class="ri-send-plane-fill"></i>
-                                                    </button>
+                                            <div class="newsleter w-50 ">
+                                                <form method="post" class="d-flex" action="${pageContext.request.contextPath}/videos/share/${video.id}">
+                                                    <span class="me-2 align-content-center">SHARE: </span>
+                                                    <input type="text" name="emailTo" id="newsleter" placeholder="Enter Email" required >
+                                                    <button type="submit" class="btn__sendMail"><i class="ri-send-plane-fill"></i></button>
                                                 </form>
                                             </div>
                                         </li>

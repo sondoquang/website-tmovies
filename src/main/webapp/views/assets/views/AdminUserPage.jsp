@@ -32,11 +32,11 @@
             <!--======= Phần control tab trong page User ======-->
             <div class="container p-0 container-tabs">
                 <div class="tabs d-flex">
-                    <div class="tab-item p-2 ${edit==true?'active_tab':''}">
+                    <div class="tab-item p-2 active_tab">
                         <i class=" ri-edit-fill"></i>
                         User Edition
                     </div>
-                    <div class="tab-item p-2 ${edit==false?'active_tab':''}">
+                    <div class="tab-item p-2 active_tab">
                         <i class="ri-file-list-line"></i>
                         User list
                     </div>

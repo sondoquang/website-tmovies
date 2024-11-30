@@ -2,10 +2,15 @@ package daoimples;
 
 import daos.FavouriteDAO;
 import entities.Favourite;
+import entities.User;
 import entities.Video;
 import jakarta.persistence.EntityManager;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import utils.XJpa;
 
 public class FavouriteDAOImple implements FavouriteDAO {
@@ -36,6 +41,7 @@ public class FavouriteDAOImple implements FavouriteDAO {
         return XJpa.excuteDUpdate(id,Favourite.class);
     }
 
+
     @Override
     public List<Object[]> getVideoFavourites() {
         String jpql = "SELECT f.video.title,f.video.poster FROM Favourite f ";
@@ -64,5 +70,23 @@ public class FavouriteDAOImple implements FavouriteDAO {
         return XJpa.getResultList(Video.class, jpql, new HashMap<>(),value);
     }
 
+    @Override
+    public Long updateLikeVideoFavourite(Favourite favourite) {
+        String jpql = "SELECT f FROM Favourite f WHERE f.user.id = ?1 AND f.video.id = ?2";
+        Object[] values = {favourite.getUser().getId(),favourite.getVideo().getId()};
+        Favourite fvt = XJpa.excuteUpdate(favourite,0);
+        return fvt!=null?(long)1:-1;
+    }
 
+    public static void main(String[] args) {
+        FavouriteDAO dao = new FavouriteDAOImple();
+        Video video = new Video();
+        video.setId(2);
+        User user = new User();
+        user.setId(33);
+        Favourite favourite = new Favourite();
+        favourite.setUser(user);
+        favourite.setVideo(video);
+        System.out.println(dao.updateLikeVideoFavourite(favourite));
+    }
 }

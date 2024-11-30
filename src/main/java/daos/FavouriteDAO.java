@@ -10,4 +10,5 @@ public interface FavouriteDAO extends DAOs<Favourite, Integer> {
     List<Video> getTop10VideosFavourite(int limit);   
     List<Video> getVideosNotFavourite();
     List<Video> getVideoFavouritesByUser(int idUser);
+    Long updateLikeVideoFavourite(Favourite favourite);
 }

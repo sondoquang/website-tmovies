@@ -27,7 +27,7 @@ public class XMailer {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
 				String username = "sondqps41027@gmail.com";
-				String password = "puhbyxfzgfehnoxd";
+				String password = "opydezankiltggoz";
 				return new PasswordAuthentication(username, password);
 			}
 		});

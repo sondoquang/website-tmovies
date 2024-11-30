@@ -44,7 +44,7 @@
             <div class="tabs d-flex">
                 <div class="tab-item ${tabActive==0?'active_tab':''} p-2 d-flex">
                     <i class="ri-video-add-fill"></i>
-                    <a href="${url}/favouritesSigle" class="ms-1 text-dark">Favorites</a>
+                    <a href="${url}/index" class="ms-1 text-dark">Favorites</a>
                 </div>
                 <div class="tab-item p-2 ${tabActive==1?'active_tab':''}">
                     <i class="ri-film-line "></i>
@@ -107,15 +107,15 @@
                     <div class="row" style=" align-items: center;">
                         <ul class="pagination col-sm-12 justify-content-center">
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
+                                <a class="page-link" href="${url}/index?pageNo=${pageNo<=1?1:pageNo-1}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li class="page-item"><a class="page-link " href="#">1</a></li>
-                            <li class="page-item"><a class="page-link " href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <c:forEach var="page" begin="1" end="${sumPage}" step="1">
+                                <li class="page-item"><a class="page-link ${pageNo==page?'active':''}" href="${url}/index?pageNo=${page}">${page}</a></li>
+                            </c:forEach>
                             <li class="page-item">
-                                <a class="page-link active" href="#" aria-label="Next">
+                                <a class="page-link" href="${url}/index?pageNo=${pageNo>sumPage-1?sumPage:pageNo+1}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
@@ -175,15 +175,15 @@
                     <div class="row" style=" align-items: center;">
                         <ul class="pagination col-sm-12 justify-content-center">
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
+                                <a class="page-link" href="${url}/favouritesUser?pageNo=${pageNo<=1?1:pageNo-1}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li class="page-item"><a class="page-link " href="#">1</a></li>
-                            <li class="page-item"><a class="page-link " href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <c:forEach var="page" begin="1" end="${sumPage}" step="1">
+                                <li class="page-item"><a class="page-link ${pageNo==page?'active':''}" href="${url}/favouritesUser?pageNo=${page}">${page}</a></li>
+                            </c:forEach>
                             <li class="page-item">
-                                <a class="page-link active" href="#" aria-label="Next">
+                                <a class="page-link" href="${url}/favouritesUser?pageNo=${pageNo>sumPage-1?sumPage:pageNo+1}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
@@ -221,10 +221,10 @@
                             <thead>
                             <tr class="table-info">
                                 <th scope="col">#</th>
-                                <th scope="col">Video Title</th>
-                                <th scope="col">Người Thích</th>
-                                <th scope="col">Ngày Thích</th>
-<%--                                <th scope="col">SEND DATE</th>--%>
+                                <th scope="col">SenderName</th>
+                                <th scope="col">Sender Email</th>
+                                <th scope="col">Recieve Email</th>
+                                <th scope="col">Send Date</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -234,7 +234,7 @@
                                     <td>${item[0]}</td>
                                     <td>${item[1]}</td>
                                     <td>${item[2]}</td>
-<%--                                    <td class="rtblemail">${item[3]}</td>--%>
+                                    <td class="rtblemail">${item[3]}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -243,15 +243,15 @@
                     <div class="row" style=" align-items: center;">
                         <ul class="pagination col-sm-12 justify-content-center">
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
+                                <a class="page-link" href="${url}/favouritesShare?pageNo=${pageNo<=1?1:pageNo-1}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li class="page-item"><a class="page-link " href="#">1</a></li>
-                            <li class="page-item"><a class="page-link " href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <c:forEach var="page" begin="1" end="${sumPage}" step="1">
+                                <li class="page-item"><a class="page-link ${pageNo==page?'active':''}" href="${url}/favouritesShare?pageNo=${page}">${page}</a></li>
+                            </c:forEach>
                             <li class="page-item">
-                                <a class="page-link active" href="#" aria-label="Next">
+                                <a class="page-link" href="${url}/favouritesShare?pageNo=${pageNo>sumPage-1?sumPage:pageNo+1}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>

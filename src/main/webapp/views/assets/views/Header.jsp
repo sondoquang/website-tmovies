@@ -20,11 +20,9 @@
                     <li class="nav__item"><a href="${pageContext.request.contextPath}/home/index" class="nav__link">Home</a>
                     </li>
 
-                    <li class="nav__item"><a href="#" class="nav__link">About
-                            Us</a></li>
+                    <li class="nav__item" ${sessionScope.user.admin==true?'hidden':''}><a href="${pageContext.request.contextPath}/admin/home" class="nav__link">Quản trị</a></li>
 
-                    <li class="nav__item"><a href="#"
-                                             class="nav__link dropdown__link">Product<i
+                    <li class="nav__item"><a href="#" class="nav__link dropdown__link">Product<i
                                 class="ri-arrow-down-s-fill dropdown__icon"></i></a>
                         <ul class="submenu">
                             <li><a href="#">Product 1</a></li>

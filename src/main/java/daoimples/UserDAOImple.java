@@ -125,7 +125,7 @@ public class UserDAOImple implements UserDAO {
 		String jpql = "SELECT u FROM User u Where u.username = ?1 ";
 		Object[] value = {username};
 		User user = XJpa.getSingleResult(User.class, jpql, value);
-		if(user != null)
+		if (user != null)
 			return true;
 		return false;
 	}
@@ -157,6 +157,8 @@ public class UserDAOImple implements UserDAO {
 //        query.setFirstResult(0);
 //        query.setMaxResults(10);
 //        System.out.println(dao.findByEmail(0 , 10, ""));
-        System.out.println(new UserDAOImple().checkValidUsername("abc"));
+        User user = new User();
+        user.setEmail("sondoquang3@gmail.com");
+        System.out.println(new UserDAOImple().findValidEmail(user));
     }
 }

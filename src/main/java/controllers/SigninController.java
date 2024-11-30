@@ -44,6 +44,7 @@ public class SigninController extends HttpServlet {
             case -2 -> "Email đã tồn tại !";
             case -3 -> "Username không được chứa kí tự rỗng !";
             case -4 -> "Sai định dạng tên !";
+            case -5 -> "Username đã được sử dụng !";
             default -> message;
         };
         if (!message.isEmpty()){
@@ -60,7 +61,7 @@ public class SigninController extends HttpServlet {
         UserDAO dao = new UserDAOImple();
         if (!XValidate.email(user.getEmail()))
             return -1;
-        if (dao.findValidEmail(user) != null)
+        if (dao.findByEmail(user.getEmail()) != null)
             return -2;
         for (int i=0 ; i<user.getUsername().length() ;i++){
             if (user.getUsername().charAt(i) == ' '){
@@ -69,6 +70,8 @@ public class SigninController extends HttpServlet {
         }
         if (!XValidate.checkName(user.getFullname()))
             return -4;
+        if(dao.checkValidUsername(user.getUsername()))
+            return -5;
         return 1;
     }
 }
